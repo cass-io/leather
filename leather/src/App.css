@@ -1,38 +1,242 @@
-.App {
-  text-align: center;
+
+body {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #000;
+  color: #ccc;
+  line-height: 1.7; /* Slightly increased line height for readability */
+  overflow-x: hidden;
+  transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.portfolio {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.portfolio-header {
+  background-color: rgba(0, 0, 0, 0.95); /* Deeper transparency */
+  padding: 30px 40px; /* Increased horizontal padding */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #222; /* Darker border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 100; /* Ensure header stays on top */
+}
+
+.portfolio-header img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid #444; /* Darker silver */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-header img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9);
+}
+
+.portfolio-header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-header nav ul li {
+  margin-left: 30px;
+}
+
+.portfolio-header nav ul li a {
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: color 0.3s ease;
+  position: relative; /* For underline effect */
+}
+
+.portfolio-header nav ul li a:hover {
+  color: #ddd;
+}
+
+.projects-section, .skills-section, .about-section, .contact-section, .hero-section {
+  padding: 60px 50px; /* Consistent padding */
+}
+
+.projects-section h2, .skills-section h2, .about-section h2, .contact-section h2 {
+  text-align: center;
+  margin-bottom: 45px;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-size: 2.4em;
+  border-bottom: 2px solid #222;
+  padding-bottom: 18px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.project-card {
+  background-color: #1a1a1a; /* Deeper dark card */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+}
+
+.project-card h3 {
+  color: #ccc;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+}
+
+.project-card p {
+  line-height: 1.8;
+  color: #aaa;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  background-color: #3a3a3a; /* Slightly lighter button */
+  color: #ddd;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  border: 1px solid #444;
+  margin-right: 10px;
+}
+
+.project-card a:hover {
+  background-color: #4a4a4a;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(50, 50, 50, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: -1;
+  pointer-events: none; /* Prevent interference with clicks */
+}
+
+.portfolio-header nav ul li a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -6px;
+  left: 0;
+  background-color: #555;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.portfolio-header nav ul li a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.project-card a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(90, 90, 90, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.project-card a:hover::before {
+  left: 100%;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  text-align: center;
+  padding: 150px 50px;
+}
+
+.hero-content h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  color: #ddd;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #bbb;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 15px 35px;
+  background-color: #444;
+  color: #eee;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-button:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+.skills-list ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.skills-list ul li {
+  background-color: #222;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px;
+  color: #aaa;
+  font-size: 0.9em;
+  transition: transform 0.2s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.skills-list ul li:hover {
+  transform: translateY(-5px);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: center
 }
